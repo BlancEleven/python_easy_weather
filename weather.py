@@ -17,7 +17,6 @@ debug = True
 
 def make_request(request, location, unit):
     r = requests.get("http://api.openweathermap.org/data/2.5/{0}?".format(request), {"zip": "{0},us".format(location),"units": unit, "APPID": APPID})
-    print(r.url)
     json_data = r.json()
     return json_data
 
@@ -84,7 +83,3 @@ def five_day(zip, units="metric"):
         return result
     else:
         return {'status': weather_data['cod'], 'message': weather_data['message']}
-
-
-
-print(five_day('04730', 'metric'))
